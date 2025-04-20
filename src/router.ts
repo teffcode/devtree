@@ -1,15 +1,16 @@
 import { Router, Request, Response } from "express";
 import { body } from "express-validator";
-import { createAccount } from "./handlers";
+import { createAccount, login } from "./handlers";
 import { handleInputErrors } from "./middleware/validation";
 
 const router = Router();
 
+// ✨ Test
 router.get("/", (req: Request, res: Response) => {
   res.send("Hola mundo en Express")
 });
 
-// Authentication and Registration
+// ✨ Authentication & Registration
 router.post("/auth/register",
   body("handle")
     .notEmpty()
@@ -22,9 +23,21 @@ router.post("/auth/register",
     .withMessage("Este email no es válido"),
   body("password")
     .isLength({ min: 8 })
-    .withMessage("El password es muy corto, mínimo 8 caracteres"),
+    .withMessage("La constraseña es muy corta, mínimo 8 caracteres"),
   handleInputErrors,
   createAccount,
+);
+
+// ✨ Login
+router.post("/auth/login",
+  body("email")
+    .isEmail()
+    .withMessage("Este email no es válido"),
+  body("password")
+    .notEmpty()
+    .withMessage("La constraseña es obligatoria"),
+  handleInputErrors,
+  login,
 );
 
 export default router;

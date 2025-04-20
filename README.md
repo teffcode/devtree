@@ -241,3 +241,31 @@ Agregar validaciones:
 4. Crear archivo `/middleware/validation.ts` con la función `handleInputErrors`
 5. Importar función `handleInputErrors` en `router.ts`
 6. Agregar **body** en `router.ts` para mostrar mensajes de error
+
+## ✨ Autenticación + Middleware
+
+### Autenticación · Comprobaciones:
+
+1. Si el usuario existe.
+2. Una vez el usuario exista, verificar si el password es correcto.
+
+### Middleware:
+
+```
+- Función que sirve como intermediario entre dos componentes o sistemas de software.
+- Evita código repetido (ejemplo: manejo de errores).
+- Se pueden crear funciones reutilizables pero también decidir el orden en el que se ejecutan.
+- Existe **Middleware a nivel Global** (en app) o **Middleware a nivel de ruta** (dentro de router).
+- Cada función Middleware tiene acceso a req y res.
+- Ejemplos: validaciones, revisar si un usuario está autenticado, si un registro existe en la db, o compartir información de una entidad a otra.
+```
+
+Cómo se hace en router:
+
+```
+router.post("/auth/register",
+  body("handle")... 👉🏼 VALIDATIONS
+  handleInputErrors, 👉🏼 ERROR HANDLER
+  createAccount, 👉🏼 HANDLER
+);
+```
