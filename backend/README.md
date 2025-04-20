@@ -253,7 +253,7 @@ Agregar validaciones:
 
 ```
 - Función que sirve como intermediario entre dos componentes o sistemas de software.
-- Evita código repetido (ejemplo: manejo de errores).
+- Evita código repetido (ejemplo: manejo de errores). Reuso.
 - Se pueden crear funciones reutilizables pero también decidir el orden en el que se ejecutan.
 - Existe **Middleware a nivel Global** (en app) o **Middleware a nivel de ruta** (dentro de router).
 - Cada función Middleware tiene acceso a req y res.
