@@ -215,3 +215,29 @@ await user.save();
 
 Usar Compass 👉🏼 https://www.mongodb.com/products/tools/compass
 > Esto mejora la legibilidad de lo que se crea en la DB
+
+Status 👉🏼 https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status
+> Agregar esto en las respuestas
+
+Security:
+
+1. Buscar librería **bcrypt**: https://www.npmjs.com/package/bcrypt
+2. Instalar: `npm i bcrypt`
+3. Crear archivo `/utils/auth.ts`
+4. Crear las funciones `hashPassword` y `checkPassword`
+
+Handler único:
+
+1. Buscar librería **slug**: https://www.npmjs.com/package/slug
+2. Instalar: `npm i slug`
+3. Instalar los types: `npm i -D @types/slug`
+4. Agregar función con slug en los handlers: `/handlers/index.ts`
+
+Agregar validaciones:
+
+1. Buscar librería **express-validator**: https://www.npmjs.com/package/express-validator
+2. Instalar: `npm i express-validator`
+3. Revisar docu **The Validation Chain**: https://express-validator.github.io/docs/guides/validation-chain
+4. Crear archivo `/middleware/validation.ts` con la función `handleInputErrors`
+5. Importar función `handleInputErrors` en `router.ts`
+6. Agregar **body** en `router.ts` para mostrar mensajes de error
